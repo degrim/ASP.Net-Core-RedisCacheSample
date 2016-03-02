@@ -1,0 +1,61 @@
+﻿@model RedisSample.Models.UserInfoViewModel
+@{
+    ViewData["Title"] = "Redis Sample";
+}
+<div class="hidden-xs col-sm-4 col-md-4 col-lg-4">&nbsp;</div>
+@if (!Model.SurveyFinished || (Model.SurveyFinished && Model.EditAnswers))
+{
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        @using (Html.BeginForm("Home", "Index", FormMethod.Post, new { @class = "form-signin" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Instance)
+                @Html.DisplayFor(m => m.Instance)
+            </div>
+            <h2 class="form-signin-heading">Survey:</h2>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FavoriteColor)
+                @Html.TextBoxFor(m => m.FavoriteColor, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FavoritePet)
+                @Html.TextBoxFor(m => m.FavoritePet, new { @class = "form-control" })
+            </div>
+            <input type="hidden" value="false" name="EditAnswers" />
+            <button class="btn btn-default btn-primary" type="submit">Save changes</button>
+        }
+    </div>
+}
+else
+{
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+        @using (Html.BeginForm("Home", "Index", FormMethod.Post, new { @class = "form-signin" }))
+        {
+            <div class="form-group">
+                @Html.LabelFor(m => m.Instance)
+                @Html.DisplayFor(m => m.Instance)
+            </div>
+            <h2 class="form-signin-heading">Thank you for completing the survey!</h2>
+            <h3>Your answers:</h3>
+            <div class="form-group">
+                @Html.LabelFor(m => m.UserName)
+                @Html.DisplayFor(m => m.UserName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FavoriteColor)
+                @Html.DisplayFor(m => m.FavoriteColor)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.FavoritePet)
+                @Html.DisplayFor(m => m.FavoritePet)
+            </div>
+            <input type="hidden" value="true" name="EditAnswers" />
+            <button class="btn btn-default btn-primary" type="submit">Edit Answers</button>
+        }
+    </div>
+}
+<div class="hidden-xs col-sm-4 col-md-4 col-lg-4">&nbsp;</div>

@@ -1,0 +1,7 @@
+.DS_STORE
+.vs/
+artifacts/
+bower_components/
+config.json
+*.xproj.user
+project.lock.json

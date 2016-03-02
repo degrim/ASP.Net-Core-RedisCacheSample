@@ -1,0 +1,9 @@
+declared-services:
+  rediscloud-service:
+    label: rediscloud
+    plan: 30mb
+applications:
+- name: redis-cache-sample-aspnetcore
+  memory: 256M
+  services:
+  - rediscloud-service
