@@ -18,7 +18,7 @@ The app can also be pushed to Bluemix from the command-line by following these s
   ```none
 applications:
 - name: <application-name>
-  memory: 256M
+  memory: 512
   instances: 2
   services:
   - rediscloud-service
@@ -43,7 +43,7 @@ applications:
 
 
 ## Run the app locally
-This sample app targets the ASP.Net Core and the .Net CoreCLR version 1.0.0-rc1-update1.
+This sample app uses .Net Core version 1.1.0 and ASP.NET Core 1.1.1.
 The app can be run locally from Visual Studio or using the command-line tools, but this will only run one instance of the app and will not demonstrate the session data being persisted accross instances.
 
 1. Copy the credentials from your `rediscloud-service` service in Bluemix to `src/RedisSample/config.json`, you can see the credentials using:
@@ -72,18 +72,13 @@ The app can be run locally from Visual Studio or using the command-line tools, b
 
     You need to copy the value of `VCAP_SERVICES` to `src/RedisSample/config.json`.
 
-2. Install [ASP.Net Core](https://get.asp.net)
-  Be sure to install and use the 1.0.0-rc1-final version of the CoreCLR runtime:
-  ```sh
-  dnvm install 1.0.0-rc1-update1 -r coreclr
-  dnvm use 1.0.0-rc1-update1 -r coreclr
-  ```
+2. Install [.Net Core SDK](https://www.microsoft.com/net/download/core)
+  Be sure to install and use the 1.1 version of the CoreCLR runtime and .NET SDK version 1.0.0-preview2-1-003177:
 
 3.1 Run the project (Linux/Mac). Go to the project folder in a terminal and run:
   ```sh
-  $ dnu restore
-  $ dnu build
-  $ dnx web
+  $ dotnet restore
+  $ dotnet run
   ```
 
 3.2 Run the project (Windows).
@@ -92,8 +87,7 @@ The app can be run locally from Visual Studio or using the command-line tools, b
 4. Go to `http://localhost:5000`
 
 ## Decomposition Instructions
-* See src/RedisSample/Startup.cs to see how to obtain the Redis Cloud credentials and add the `RedisCacheService` session handler.
-* See src/RedisSample/RedisCacheService.cs to see how the service implements the `IDistributedCache` interface using the `StackExchange.Redis` NuGet package.
+* See src/RedisSample/Startup.cs to see how to obtain the Redis Cloud credentials and configure Redis for both session data and data protection keys.
 
 ## Troubleshooting
 

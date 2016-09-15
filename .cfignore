@@ -1,7 +1,13 @@
 .DS_STORE
+.git/
+.gitignore
 .vs/
-artifacts/
+.vscode/
+*.user
+*.xproj
+bin/
 bower_components/
-config.json
-*.xproj.user
+obj/
+README.md
 project.lock.json
+vcap-local.json

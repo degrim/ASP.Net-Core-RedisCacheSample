@@ -4,7 +4,10 @@ declared-services:
     plan: 30mb
 applications:
 - name: redis-cache-sample-aspnetcore
-  memory: 256M
+  memory: 512M
   instances: 2
   services:
   - rediscloud-service
+  -env:
+    DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    CACHE_NUGET_PACKAGES: false

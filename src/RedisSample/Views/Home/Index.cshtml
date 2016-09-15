@@ -6,8 +6,9 @@
 @if (!Model.SurveyFinished || (Model.SurveyFinished && Model.EditAnswers))
 {
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        @using (Html.BeginForm("Home", "Index", FormMethod.Post, new { @class = "form-signin" }))
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-signin" }))
         {
+            @Html.AntiForgeryToken()
             <div class="form-group">
                 @Html.LabelFor(m => m.Instance)
                 @Html.DisplayFor(m => m.Instance)
@@ -33,7 +34,7 @@
 else
 {
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-        @using (Html.BeginForm("Home", "Index", FormMethod.Post, new { @class = "form-signin" }))
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-signin" }))
         {
             <div class="form-group">
                 @Html.LabelFor(m => m.Instance)
