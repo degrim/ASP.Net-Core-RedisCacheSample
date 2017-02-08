@@ -4,6 +4,7 @@ declared-services:
     plan: 30mb
 applications:
 - name: redis-cache-sample-aspnetcore
+  disk_quota: 1536M
   memory: 512M
   instances: 2
   services:
