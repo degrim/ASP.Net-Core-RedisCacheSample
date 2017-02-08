@@ -9,6 +9,7 @@ applications:
   instances: 2
   services:
   - rediscloud-service
-  -env:
+  env:
     DOTNET_CLI_TELEMETRY_OPTOUT: 1
     CACHE_NUGET_PACKAGES: false
+    DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
